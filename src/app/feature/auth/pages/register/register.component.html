@@ -10,86 +10,101 @@
         margin-right: 0;
       }
     }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      border-radius: 1rem;
+    }
+
+    .img-container {
+      padding: 20px;
+    }
+
+    .img-fluid {
+      max-width: 100%;
+      height: auto;
+      border-radius: 1rem;
+    }
   </style>
 
   <!-- Jumbotron -->
   <div class="container py-4">
     <div class="row g-0 align-items-center">
       <div class="col-lg-6 mb-5 mb-lg-0">
-        <div class="card cascading-right bg-body-tertiary" style="
-            backdrop-filter: blur(30px);
-            ">
+        <div class="card cascading-right bg-body-tertiary" style="backdrop-filter: blur(30px);">
           <div class="card-body p-5 shadow-5 text-center">
             <h2 class="fw-bold mb-5">Registro de usuario</h2>
-            <form>
+            <form role="form" [formGroup]="registerForm" *ngIf="!registered">
               <!-- 2 column grid layout with text inputs for the first and last names -->
               <div class="row">
-                <div class="col-md-6 mb-4">
+                <div class="col-md-12 mb-4">
                   <div data-mdb-input-init class="form-outline">
-                    <input type="text" id="form3Example1" class="form-control" />
-                    <label class="form-label" for="form3Example1">First name</label>
+                    <label class="form-label" for="form3Example1">Nombre completo</label>
+                    <input formControlName="fullName" type="text" id="form3Example1" class="form-control" />
+                    <span class="text-danger">{{getErrorFrom('fullName')}}</span>
                   </div>
                 </div>
-                <div class="col-md-6 mb-4">
-                  <div data-mdb-input-init class="form-outline">
-                    <input type="text" id="form3Example2" class="form-control" />
-                    <label class="form-label" for="form3Example2">Last name</label>
-                  </div>
-                </div>
+              </div>
+
+              <!-- Identification input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form3Example2">Número de identificación</label>
+                <input formControlName="cardId" type="number" id="form3Example2" class="form-control" />
+                <span class="text-danger">{{getErrorFrom('cardId')}}</span>
               </div>
 
               <!-- Email input -->
               <div data-mdb-input-init class="form-outline mb-4">
-                <input type="email" id="form3Example3" class="form-control"/>
-                <label class="form-label" for="form3Example3">Email address</label>
+                <label class="form-label" for="form3Example3">Correo electrónico</label>
+                <input formControlName="email" type="email" id="form3Example3" class="form-control"/>
+                <span class="text-danger">{{getErrorFrom('email')}}</span>
               </div>
 
-              <!-- Password input -->
+              <!-- Cellphone input -->
               <div data-mdb-input-init class="form-outline mb-4">
-                <input type="password" id="form3Example4" class="form-control" />
-                <label class="form-label" for="form3Example4">Password</label>
+                <label class="form-label" for="form3Example4">Número de celular</label>
+                <input formControlName="numberCellphone" type="number" id="form3Example4" class="form-control"/>
+                <span class="text-danger">{{getErrorFrom('numberCellphone')}}</span>
               </div>
 
               <!-- Checkbox -->
               <div class="form-check d-flex justify-content-center mb-4">
                 <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
                 <label class="form-check-label" for="form2Example33">
-                  Subscribe to our newsletter
+                  Acepto terminos y condiciones
                 </label>
               </div>
 
               <!-- Submit button -->
-              <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
-                Sign up
+              <button (click)="register()" type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+                Registrarse
               </button>
 
               <!-- Register buttons -->
               <div class="text-center">
-                <p>or sign up with:</p>
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                  <i class="fab fa-facebook-f"></i>
-                </button>
-
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                  <i class="fab fa-google"></i>
-                </button>
-
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                  <i class="fab fa-twitter"></i>
-                </button>
-
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                  <i class="fab fa-github"></i>
-                </button>
+                <p>Si ya te encuentras registrado, <a routerLink="../inicio-sesion">da click aquí para iniciar sesion</a></p>
               </div>
             </form>
+            <div *ngIf="registered">
+              <p>Registro exitoso, su contraseña predeterminada es:</p>
+              <h3>{{passwordGenerate}}</h3>
+              <p> Guardela en un lugar seguro y recuerdela, no la puede recuperar</p>
+              <div class="text-center">
+                <a routerLink="../inicio-sesion">Click aquí para Iniciar Sesion</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="col-lg-6 mb-5 mb-lg-0">
-        <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" class="w-100 rounded-4 shadow-4"
-             alt="" />
+      <div class="col-lg-6 img-container">
+        <img *ngIf="!registered" src="https://limpiezasbrillo.com/wp-content/uploads/2015/07/limpieza-concesionarios-valencia-1024x727.jpg" class="img-fluid shadow-4" alt="Car dealership" />
+        <img *ngIf="registered" src="https://www.espacios.net.mx/wp-content/uploads/2022/09/como-crear-contrasen%CC%83a-segura.jpg" class="img-fluid shadow-4" alt="Registro exitoso" />
       </div>
     </div>
   </div>

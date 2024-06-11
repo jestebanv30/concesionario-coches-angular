@@ -5,6 +5,9 @@ import {AppBaseComponent} from "../../../../core/utils/AppBaseComponent";
 import {NgClass} from "@angular/common";
 import {AuthLoginRequestDto} from "../../../../core/dto/authLoginRequestDto";
 import {AuthService} from "../../../../core/service/auth.service";
+import {lastValueFrom} from "rxjs";
+import {TokenService} from "../../../../core/service/token.service";
+import {ErrorsForm} from "../../../../core/enums/ErrorsForm";
 
 @Component({
   selector: 'app-login',
@@ -28,7 +31,7 @@ export class LoginComponent extends AppBaseComponent{
   /*
   Colocar las validaciones de la documentacion de los requisitos funcionales
    */
-  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService) {
+  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService, private tokenService: TokenService) {
     super();
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -36,7 +39,7 @@ export class LoginComponent extends AppBaseComponent{
     })
   }
 
-  public signIn(): void {
+  public async signIn(): Promise<void> {
 
     let dtoLogin: AuthLoginRequestDto;
 
@@ -50,7 +53,11 @@ export class LoginComponent extends AppBaseComponent{
         password,
       }
 
-      this.authService.signIn(dtoLogin);
+      await lastValueFrom(this.authService.signIn(dtoLogin));
+
+      console.log(this.tokenService.getToken());
+
+      await this.router.navigateByUrl('/portafolio');
 
       console.log('Se va a mostrar antes que el subscribe');
 
@@ -68,14 +75,18 @@ export class LoginComponent extends AppBaseComponent{
   }
    */
 
+  /**
+   * Retorna un mensaje de error en el campo del formulario
+   * @param field
+   */
   public getErrorFrom(field: string): string {
     let message;
 
     if (this.isTouchedField(this.loginForm, field)) {
       if (this.loginForm.get(field).hasError('required')) {
-        message = " El campo es requerido";
+        message = ErrorsForm.REQUIRED;
       } else if (this.loginForm.get(field).hasError('email')) {
-        message = " Requiere el formato de email";
+        message = ErrorsForm.EMAIL_FORMAT;
       }
     }
 

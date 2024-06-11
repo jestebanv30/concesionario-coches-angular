@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
 import {AuthLoginRequestDto} from "../dto/authLoginRequestDto";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environments.development";
 import {AuthLoginResponseDto} from "../dto/authLoginResponseDto";
 import {TokenService} from "./token.service";
+import {RegisterRequestDto} from "../dto/RegisterRequestDto";
+import {RegisterResponseDto} from "../dto/RegisterResponseDto";
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +18,15 @@ export class AuthService {
   constructor(private http: HttpClient, private tokenService: TokenService) {
   }
 
-  public signIn(authDto: AuthLoginRequestDto): void {
-     console.log(`Token ${this.tokenService}`);
-     this.http.post<AuthLoginResponseDto>(this.apiUrl + "auth/sign-in", authDto).subscribe({
-       next: value => {
-         this.tokenService.saveToken(value.token);
-       }
-     });
+  public signIn(authDto: AuthLoginRequestDto): Observable<AuthLoginResponseDto> {
+     return this.http.post<AuthLoginResponseDto>(this.apiUrl + "auth/sign-in", authDto).pipe(
+       tap(response => {
+         this.tokenService.saveToken(response.token);
+       })
+     );
    }
+
+  public register(registerDto: RegisterRequestDto): Observable<RegisterResponseDto> {
+    return this.http.post<RegisterResponseDto>(this.apiUrl + "auth/register", registerDto);
+  }
 }
