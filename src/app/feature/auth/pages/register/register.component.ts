@@ -10,6 +10,7 @@ import {lastValueFrom} from "rxjs";
 import {RegisterRequestDto} from "../../../../core/dto/RegisterRequestDto";
 import {CustomValidators} from "../../../../core/utils/CustomValidators";
 import {ErrorsForm} from "../../../../core/enums/ErrorsForm";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-register',
@@ -60,8 +61,13 @@ export class RegisterComponent extends AppBaseComponent {
       })
       this.registered = true;
     }else {
-      alert('Errores en el formulario');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Hay errores en el formulario, reviselo por favor'
+      })
       console.log(this.getAllErrorsForm(this.registerForm));
+      this.registerForm.markAllAsTouched();
     }
   }
 
