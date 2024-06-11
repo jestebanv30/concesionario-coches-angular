@@ -5,10 +5,8 @@ import {AppBaseComponent} from "../../../../core/utils/AppBaseComponent";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../../../../core/service/auth.service";
 import {TokenService} from "../../../../core/service/token.service";
-import {AuthLoginRequestDto} from "../../../../core/dto/authLoginRequestDto";
 import {lastValueFrom} from "rxjs";
 import {RegisterRequestDto} from "../../../../core/dto/RegisterRequestDto";
-import {CustomValidators} from "../../../../core/utils/CustomValidators";
 import {ErrorsForm} from "../../../../core/enums/ErrorsForm";
 import Swal from "sweetalert2";
 

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { getCookie, setCookie } from "typescript-cookie";
+import {jwtDecode} from "jwt-decode";
+import {CustomerJwtDto} from "../dto/customerJwtDto";
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +21,11 @@ export class TokenService {
 
   public deleteToken(): void {
 
+  }
+
+  public getInfoToken(): CustomerJwtDto {
+    let infoToken = jwtDecode(getCookie('token'));
+    console.log(infoToken);
+    return <CustomerJwtDto>infoToken;
   }
 }
