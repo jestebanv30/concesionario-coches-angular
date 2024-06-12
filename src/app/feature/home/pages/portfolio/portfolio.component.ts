@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, NgIterable} from '@angular/core';
 import {CarService} from "../../../../core/service/car.service";
 import {FormsModule} from "@angular/forms";
 import {HeaderNavComponent} from "../../components/header-nav/header-nav.component";
@@ -27,4 +27,7 @@ export class PortfolioComponent {
     })
   }
 
+  onCarClick(car: any) {
+
+  }
 }

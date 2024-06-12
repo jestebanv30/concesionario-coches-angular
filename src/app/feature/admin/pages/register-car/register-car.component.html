@@ -1,0 +1,130 @@
+<form role="form" [formGroup]="registerCarForm">
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Registrar un nuevo coche</h2>
+    <div class="accordion accordion-borderless" id="accordionFlushExampleX">
+      <!-- Información básica -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOneX">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOneX" aria-expanded="true" aria-controls="flush-collapseOneX">
+            Información básica
+          </button>
+        </h2>
+        <div id="flush-collapseOneX" class="accordion-collapse collapse show"
+             aria-labelledby="flush-headingOneX" data-bs-parent="#accordionFlushExampleX">
+          <div class="accordion-body">
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example3">Código marca coche</label>
+                <select class="form-select" id="form3Example3" formControlName="carBrandId">
+                  <option value="" selected disabled>Seleccione</option>
+                  <option *ngFor="let carBrand of listCarBrand" [value]="carBrand.id">{{carBrand.description}}</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example4">Referencia</label>
+                <input formControlName="reference" type="text" id="form3Example4" class="form-control" placeholder="Referencia"/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example5">Precio</label>
+                <input formControlName="price" type="number" id="form3Example5" class="form-control" placeholder="Precio"/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example6">Año modelo</label>
+                <input formControlName="modelYear" type="number" id="form3Example6" class="form-control" placeholder="Año modelo"/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example7">Categoría</label>
+                <input formControlName="category" type="text" id="form3Example7" class="form-control" placeholder="Categoría"/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example8">Stock</label>
+                <input formControlName="stock" type="number" id="form3Example8" class="form-control" placeholder="Stock"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información mecánica -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwoX">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseTwoX" aria-expanded="false" aria-controls="flush-collapseTwoX">
+            Información mecánica
+          </button>
+        </h2>
+        <div id="flush-collapseTwoX" class="accordion-collapse collapse" aria-labelledby="flush-headingTwoX"
+             data-bs-parent="#accordionFlushExampleX">
+          <div class="accordion-body">
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example9">Caballos de fuerza</label>
+                <input formControlName="horsepower" type="number" id="form3Example9" class="form-control" placeholder="Numero de caballos de fuerza"/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example10">Cilindraje</label>
+                <input formControlName="engineDisplacement" type="number" id="form3Example10" class="form-control" placeholder="Cilindraje CC"/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example11">Transmisión</label>
+                <input formControlName="transmission" type="text" id="form3Example11" class="form-control" placeholder="Transmisión"/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example12">Tipo de combustible</label>
+                <input formControlName="fuelType" type="text" id="form3Example12" class="form-control" placeholder="Tipo de combustible"/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example13">Tracción</label>
+                <input formControlName="traction" type="text" id="form3Example13" class="form-control" placeholder="Tracción"/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example14">Dirección</label>
+                <input formControlName="steering" type="text" id="form3Example14" class="form-control" placeholder="Dirección"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información estética -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingThreeX">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseThreeX" aria-expanded="false" aria-controls="flush-collapseThreeX">
+            Información estética
+          </button>
+        </h2>
+        <div id="flush-collapseThreeX" class="accordion-collapse collapse" aria-labelledby="flush-headingThreeX"
+             data-bs-parent="#accordionFlushExampleX">
+          <div class="accordion-body">
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example15">Color</label>
+                <input formControlName="color" type="text" id="form3Example15" class="form-control" placeholder="Color"/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example16">Número de puertas</label>
+                <input formControlName="numberDoor" type="number" id="form3Example16" class="form-control" placeholder="Número de puertas"/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example17">Número de asientos</label>
+                <input formControlName="numberSeat" type="number" id="form3Example17" class="form-control" placeholder="Número de asientos"/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="form3Example18">Ruta de la imagen</label>
+                <input formControlName="imagePath" type="text" id="form3Example18" class="form-control" placeholder="Ruta de la imagen"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Submit button -->
+    <div class="text-center mt-4">
+      <button (click)="registerCar()" type="submit" class="btn btn-primary btn-lg">
+        Registrar carro
+      </button>
+    </div>
+  </div>
+</form>

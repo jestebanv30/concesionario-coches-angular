@@ -9,11 +9,11 @@ export class CustomValidators {
    * @param control
    * Retorna null si la fecha es valida, invalidDate: true de lo contrario
    */
-  public static numberDateFuture (control: FormControl): { [p: string]: boolean} | null {
+  public static numberDateFuture (control: FormControl): { [p: string]: boolean } | null {
     if (control.value) {
       const today = new Date(Date.now()).getFullYear();
       if (control.value > (today)) {
-        return {'invalidDate': true}
+        return {'invalidDate': true }
       }
     }
     return null;

@@ -27,6 +27,15 @@ export class CarService {
     return this.http.post<CarDto>(`${this.apiUrl}cars`, newCar);
   }
 
+  // Puedes añadir métodos para obtener coches por precio y marca si lo deseas
+  public getCarsByPrice(price: number): Observable<CarDto[]> {
+    return this.http.get<CarDto[]>(`${this.apiUrl}cars/priceLess-${price}`);
+  }
+
+  public getCarsByBrand(brand: string): Observable<CarDto[]> {
+    return this.http.get<CarDto[]>(`${this.apiUrl}cars?brand=${brand}`);
+  }
+
   public setNumberProducts(): void {
     let count: number = 0;
     const carsPurchaseString = localStorage.getItem("carsPurschase");

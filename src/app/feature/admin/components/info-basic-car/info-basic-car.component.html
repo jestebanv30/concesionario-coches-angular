@@ -1,0 +1,114 @@
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+  <style>
+    .form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .form-card {
+      max-width: 500px;
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(30px);
+    }
+
+    .form-card .card-body {
+      padding: 2rem;
+    }
+
+    .form-outline {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-select {
+      display: block;
+      width: 100%;
+      height: calc(2.25rem + 2px);
+      padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      appearance: none;
+    }
+
+    .form-select:focus {
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    .form-label {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background-color: #000;
+      border-color: #000;
+      border-radius: 25px;
+    }
+
+    .btn-primary:hover {
+      background-color: #333;
+      border-color: #333;
+    }
+  </style>
+
+  <div class="form-container">
+    <div class="card form-card bg-body-tertiary">
+      <div class="card-body shadow-5 text-center">
+        <form [formGroup]="infoBasicForm">
+          <!-- carBrandId input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Código marca coche</label>
+            <select class="form-select" id="form3Example3" formControlName="carBrandId">
+              <option value="" selected disabled>Seleccione</option>
+              <option *ngFor="let carBrand of listCarBrand" [value]="carBrand.id">{{carBrand.description}}</option>
+            </select>
+          </div>
+
+          <!-- reference input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form3Example4">Referencia</label>
+            <input formControlName="reference" type="text" id="form3Example4" class="form-control" placeholder="Referencia"/>
+          </div>
+
+          <!-- price input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form3Example5">Precio</label>
+            <input formControlName="price" type="number" id="form3Example5" class="form-control" placeholder="Precio"/>
+          </div>
+
+          <!-- modelYear input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form3Example6">Año modelo</label>
+            <input formControlName="modelYear" type="text" id="form3Example6" class="form-control" placeholder="Año modelo"/>
+          </div>
+
+          <!-- category input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form3Example7">Categoría</label>
+            <input formControlName="category" type="text" id="form3Example7" class="form-control" placeholder="Categoría"/>
+          </div>
+
+          <!-- stock input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form3Example8">Stock</label>
+            <input formControlName="stock" type="text" id="form3Example8" class="form-control" placeholder="Stock"/>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->

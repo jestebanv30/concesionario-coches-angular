@@ -2,6 +2,34 @@
   <app-header-nav></app-header-nav>
 </header>
 
-<p>portfolio works!</p>
-
-<p *ngFor="let car of listCarsPortfolio">{{car.reference}}</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-center section-title">Nuestros Productos</h2>
+      <p class="text-center section-subtitle">Explora nuestra exclusiva colección de coches</p>
+    </div>
+  </div>
+  <div class="row">
+    <div *ngFor="let car of listCarsPortfolio" class="col-6 col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-img-container">
+          <img class="card-img-top" [src]="car.imagePath" alt="Imagen de {{car.reference}}">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{car.reference}}</h5>
+          <p class="card-text">{{car.description}}</p>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span>
+            <span class="sold">10000+ vendidos</span>
+          </div>
+          <span class="badge badge-best-seller">Lo más vendido</span>
+          <p class="card-text price"><strong>{{car.price | currency:'COP'}}</strong></p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <button class="btn btn-primary btn-buy">Previsualizar</button>
+          <button class="btn btn-primary btn-add-to-cart"><i class="fas fa-cart-plus">Agregar</i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

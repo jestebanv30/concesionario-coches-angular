@@ -1,0 +1,111 @@
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+  <style>
+    .form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .form-card {
+      max-width: 500px;
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(30px);
+    }
+
+    .form-card .card-body {
+      padding: 2rem;
+    }
+
+    .form-outline {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-select {
+      display: block;
+      width: 100%;
+      height: calc(2.25rem + 2px);
+      padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      appearance: none;
+    }
+
+    .form-select:focus {
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    .form-label {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background-color: #000;
+      border-color: #000;
+      border-radius: 25px;
+    }
+
+    .btn-primary:hover {
+      background-color: #333;
+      border-color: #333;
+    }
+  </style>
+
+  <div class="form-container">
+    <div class="card form-card bg-body-tertiary">
+      <div class="card-body shadow-5 text-center">
+        <form [formGroup]="infoMechanicForm">
+
+          <!-- reference input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form3Example4">Caballos de fuerza</label>
+            <input formControlName="horsepower" type="number" id="form3Example4" class="form-control" placeholder="Numero de caballos de fuerza"/>
+          </div>
+
+          <!-- price input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form3Example5">Cilindraje</label>
+            <input formControlName="engineDisplacement" type="number" id="form3Example5" class="form-control" placeholder="Cilindraje CC"/>
+          </div>
+
+          <!-- modelYear input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form3Example6">Transmisión</label>
+            <input formControlName="transmission" type="text" id="form3Example6" class="form-control" placeholder="Transmisión"/>
+          </div>
+
+          <!-- category input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form3Example7">Tipo de combustible</label>
+            <input formControlName="fuelType" type="text" id="form3Example7" class="form-control" placeholder="Tipo de combustible"/>
+          </div>
+
+          <!-- stock input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form3Example8">Tracción</label>
+            <input formControlName="traction" type="text" id="form3Example8" class="form-control" placeholder="Tracción"/>
+          </div>
+
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form3Example9">Dirección</label>
+            <input formControlName="steering" type="text" id="form3Example9" class="form-control" placeholder="Dirección"/>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->

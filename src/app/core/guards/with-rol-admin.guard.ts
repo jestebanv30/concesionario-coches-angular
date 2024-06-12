@@ -1,16 +1,15 @@
 import {CanActivateFn, Router} from '@angular/router';
 import {inject} from "@angular/core";
-import {TokenService} from "../service/token.service";
 import Swal from "sweetalert2";
+import {TokenService} from "../service/token.service";
+import {Roles} from "../enums/Roles";
 
-
-export const authWithoutGuard: CanActivateFn = (route, state) => {
+export const withRolAdminGuard: CanActivateFn = (route, state) => {
 
   const tokenService = inject(TokenService);
   const router = inject(Router);
 
-
-  if(!tokenService.getToken()) {
+  if(tokenService.getInfoToken().rol != Roles.ADMIN) {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',

@@ -3,6 +3,7 @@ export interface CustomerJwtDto{
   fullName: string;
   numberCellphone: string;
   email: string;
+  rol: string;
   ia: number;
   exp: number;
 }
