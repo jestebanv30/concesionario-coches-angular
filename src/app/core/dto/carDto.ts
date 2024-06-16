@@ -17,4 +17,5 @@ export interface CarDto {
   category: string;
   imagePath: string;
   stock: number;
+  quantity?: number;
 }

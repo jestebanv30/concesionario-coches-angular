@@ -1,125 +1,178 @@
-/* Estilos para las tarjetas */
+/* General container styling */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Section title and subtitle styling */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: #777;
+  margin-bottom: 40px;
+}
+
+/* Card styling */
 .card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   border: none;
-  transition: transform 0.2s;
-  border-radius: 10px;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: translateY(-10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Card image container styling */
 .card-img-container {
-  width: 100%;
   height: 200px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  background-color: #f8f8f8;
 }
 
 .card-img-top {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-.btn-cart {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(0, 0, 0, 0.6);
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  padding: 5px 10px;
-  border-radius: 50%;
-  font-size: 1rem;
-}
-
+/* Card body styling */
 .card-body {
-  text-align: center;
-  padding: 1rem;
+  padding: 15px;
 }
 
 .card-title {
-  font-size: 1rem; /* Ajuste de tamaño */
-  font-weight: bold;
-}
-
-.card-text {
-  font-size: 0.8rem; /* Ajuste de tamaño */
-  color: #555;
-}
-
-.product-rating {
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
+.card-text {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+/* Product rating styling */
+.product-rating {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
 .stars {
-  color: #ffd700;
+  color: gold;
+  margin-right: 10px;
 }
 
 .sold {
+  font-size: 0.9rem;
   color: #777;
-  font-size: 0.8rem;
 }
 
+/* Badge styling */
 .badge-best-seller {
-  background-color: #28a745;
-  color: #fff;
-  font-size: 0.7rem; /* Ajuste de tamaño */
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  background-color: #ff9800;
+  color: white;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 15px;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 
+/* Price styling */
 .price {
-  font-size: 1rem; /* Ajuste de tamaño */
-  font-weight: bold;
-  margin-top: 0.5rem;
+  font-size: 1.4rem;
+  color: #28a745;
 }
 
-.btn-primary {
-  background-color: #000;
-  border-color: #000;
-  border-radius: 25px;
-  padding: 0.25rem 0.75rem; /* Ajuste de tamaño */
-  font-size: 0.8rem; /* Ajuste de tamaño */
-}
-
-.btn-primary:hover {
-  background-color: #333;
-  border-color: #333;
-}
-
-.btn-buy,
-.btn-add-to-cart {
-  border-radius: 25px;
-  font-size: 0.8rem; /* Ajuste de tamaño */
-}
-
-.btn-add-to-cart {
+/* Card footer styling */
+.card-footer {
+  background-color: white;
+  border-top: none;
+  padding: 10px 15px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 0.5rem;
+  justify-content: space-between;
 }
 
-/* Ajustes para dispositivos móviles */
-@media (max-width: 768px) {
-  .card {
-    margin-bottom: 1rem;
-  }
-  .card-title {
-    font-size: 0.9rem; /* Ajuste de tamaño */
-  }
-  .card-text {
-    font-size: 0.75rem; /* Ajuste de tamaño */
-  }
-  .price {
-    font-size: 0.9rem; /* Ajuste de tamaño */
-  }
+/* Button styling */
+.btn-buy, .btn-add-to-cart {
+  font-size: 0.85rem;
+  background-color: #343a40;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn-buy:hover, .btn-add-to-cart:hover {
+  background-color: #23272b;
+}
+
+.btn-buy {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.btn-add-to-cart i {
+  margin-right: 5px;
+}
+
+.btn-add-to-cart[disabled] {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Custom class for out of stock */
+.text-danger {
+  color: red !important;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-dialog {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+}
+
+.modal-header, .modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
 }

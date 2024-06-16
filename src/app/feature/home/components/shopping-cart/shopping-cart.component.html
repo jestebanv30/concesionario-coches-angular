@@ -1,0 +1,33 @@
+<div class="shopping-cart" *ngIf="!purchaseSaved">
+  <div class="shopping-cart-header">
+    <h2>Carrito de Compras</h2>
+    <button class="btn btn-close" (click)="closeCart()">×</button>
+  </div>
+  <div class="shopping-cart-body">
+    <div *ngFor="let car of carsPurchase$ | async" class="shopping-cart-item">
+      <div class="shopping-cart-item-content">
+        <img [src]="carDetails[car.codeCar]?.imagePath" alt="Imagen de {{carDetails[car.codeCar]?.reference}}" class="shopping-cart-item-image">
+        <div class="shopping-cart-item-details">
+          <h5>{{ carDetails[car.codeCar]?.reference }}</h5>
+          <p>Cantidad: {{ car.quantity }}</p>
+          <p>Total: {{ car.total | currency: 'COP' }}</p>
+        </div>
+        <div class="shopping-cart-item-actions">
+          <button class="btn btn-remove" (click)="removeFromCart(car.codeCar)">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="shopping-cart-footer">
+    <button class="btn btn-primary btn-comprar-todo" (click)="registerPurchase()">
+      <i class="fas fa-shopping-cart"></i> Comprar Todo
+    </button>
+  </div>
+</div>
+
+<div *ngIf="purchaseSaved" class="purchase-saved">
+  <h1>Tu codigo de factura es: {{numberBill}}. Guardalo por favor</h1>
+  <button class="btn btn-secondary" (click)="closeCart()">Cerrar</button>
+</div>

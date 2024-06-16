@@ -17,19 +17,29 @@
         </div>
         <div class="card-body">
           <h5 class="card-title">{{car.reference}}</h5>
-          <p class="card-text">{{car.description}}</p>
+          <p class="card-text">{{car.carBrandDescription + " " + car.modelYear}}</p>
+          <p class="card-text" [ngClass]="{'text-danger': car.stock === 0}">
+            {{ "Cantidad: " + car.stock + " unidades disponibles" }}
+          </p>
           <div class="product-rating">
             <span class="stars">★★★★★</span>
             <span class="sold">10000+ vendidos</span>
           </div>
           <span class="badge badge-best-seller">Lo más vendido</span>
-          <p class="card-text price"><strong>{{car.price | currency:'COP'}}</strong></p>
+          <p class="card-text price"><strong>{{ car.price | currency: 'COP' }}</strong></p>
         </div>
         <div class="card-footer d-flex justify-content-between">
-          <button class="btn btn-primary btn-buy">Previsualizar</button>
-          <button class="btn btn-primary btn-add-to-cart"><i class="fas fa-cart-plus">Agregar</i></button>
+          <button class="btn btn-buy" (click)="selectCar(car)">Previsualizar</button>
+          <button class="btn btn-add-to-cart" [disabled]="car.stock === 0" (click)="addCarShoppingCart(car)">
+            <i class="fas fa-cart-plus"></i>Agregar
+          </button>
+          <button class="btn btn-remove-from-cart" [disabled]="car.stock === 0" (click)="deleteCarShoppingCart(car)">
+            <i class="fas fa-trash"></i> Eliminar
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<app-preview-car [car]="selectedCar" *ngIf="selectedCar"></app-preview-car>

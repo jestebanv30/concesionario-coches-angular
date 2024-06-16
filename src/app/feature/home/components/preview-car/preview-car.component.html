@@ -1,0 +1,37 @@
+<div class="modal" tabindex="-1" [ngClass]="{'show': car}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ car?.reference }}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closePreview()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4">
+            <img [src]="car?.imagePath" alt="Imagen de {{car?.reference}}" class="img-fluid mb-3">
+          </div>
+          <div class="col-md-8">
+            <ul class="list-unstyled">
+              <li><strong>Marca:</strong> {{ car?.carBrandDescription }}</li>
+              <li><strong>Año:</strong> {{ car?.modelYear }}</li>
+              <li><strong>Precio:</strong> {{ car?.price | currency:'COP':'symbol':'1.0-0' }}</li>
+              <li><strong>Color:</strong> {{ car?.color }}</li>
+              <li><strong>Categoría:</strong> {{ car?.category }}</li>
+              <li><strong>Puertas:</strong> {{ car?.numberDoor }}</li>
+              <li><strong>Cilindraje:</strong> {{ car?.engineDisplacement }} cc</li>
+              <li><strong>Transmisión:</strong> {{ car?.transmission }}</li>
+              <li><strong>Combustible:</strong> {{ car?.fuelType }}</li>
+              <li><strong>Asientos:</strong> {{ car?.numberSeat }}</li>
+              <li><strong>Tracción:</strong> {{ car?.traction }}</li>
+              <li><strong>Dirección:</strong> {{ car?.steering }}</li>
+              <li *ngIf="car?.stock === 0" class="text-danger">¡Agotado!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closePreview()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

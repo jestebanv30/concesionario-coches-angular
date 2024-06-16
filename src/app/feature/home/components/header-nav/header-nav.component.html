@@ -36,20 +36,10 @@
       </div>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" (click)="toggleCart()">
             <i class="fas fa-shopping-cart"></i>
+            <span class="badge bg-danger">Carrito {{numberProducts}}</span>
           </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-bell"></i>
-            <span class="badge bg-danger">1</span>
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Some news</a></li>
-            <li><a class="dropdown-item" href="#">Another news</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
@@ -70,3 +60,5 @@
     </div>
   </div>
 </nav>
+
+<app-shopping-cart *ngIf="showCart" (close)="toggleCart()"></app-shopping-cart>

@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { CarDto } from "../dto/carDto";
 import { environment } from "../../../environments/environments.development";
-import { CarsPurchaseDto } from "../dto/carPurchaseDto";
+import { CarsPurchaseDto } from "../dto/carsPurchaseDto";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class CarService {
   private readonly apiUrl: string = environment.apiUrl;
 
   private numberProducts = new BehaviorSubject(0);
+
   public readonly getNumberProducts: Observable<any> = this.numberProducts.asObservable();
 
   constructor(private http: HttpClient) {
@@ -38,23 +39,12 @@ export class CarService {
 
   public setNumberProducts(): void {
     let count: number = 0;
-    const carsPurchaseString = localStorage.getItem("carsPurschase");
-
-    if (!carsPurchaseString) {
+    const carsPurchase: Array<CarsPurchaseDto> = JSON.parse(localStorage.getItem("carsPurchase"));
+    if (!carsPurchase) {
       this.numberProducts.next(0);
       return;
     }
-
-    let carsPurchase: Array<CarsPurchaseDto>;
-    try {
-      carsPurchase = JSON.parse(carsPurchaseString);
-    } catch (e) {
-      console.error("Error parsing carsPurschase from localStorage", e);
-      this.numberProducts.next(0);
-      return;
-    }
-
-    console.log("esto es nulo", carsPurchase);
+    console.log("Esto es nulo", carsPurchase);
     carsPurchase.forEach(car => count += car.quantity);
     this.numberProducts.next(count);
   }
