@@ -1,0 +1,40 @@
+.container {
+  margin-top: 20px;
+}
+
+.table {
+  margin-bottom: 20px;
+}
+
+.thead-dark {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  border: none;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: #6c757d;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,70 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-center section-title">Historial de Compras</h2>
+      <p class="text-center section-subtitle">Revisa tus compras recientes</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Código Factura</th>
+          <th scope="col">Cédula Cliente</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Total</th>
+          <th scope="col">Método de Pago</th>
+          <th scope="col">Ver Coches</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let purchase of historyPurchases" class="table-success">
+          <td>{{ purchase.numberBill }}</td>
+          <td>{{ purchase.cardIdCustomer }}</td>
+          <td>{{ purchase.date | date: 'shortDate' }}</td>
+          <td>{{ purchase.total | currency: 'COP' }}</td>
+          <td>{{ purchase.paymentMethod }}</td>
+          <td>
+            <button class="btn btn-info" (click)="showListCarsPurchase(purchase.carsPurchase)" data-bs-toggle="modal" data-bs-target="#carsModal">Ver detalles</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="carsModal" tabindex="-1" aria-labelledby="carsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="carsModalLabel">Lista de coches comprados</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+          <tr>
+            <th>Referencia del coche</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="table-success" *ngFor="let car of carsPurchases">
+            <td>{{ car.referenceCar }}</td>
+            <td>{{ car.quantity }}</td>
+            <td>{{ car.total | currency: 'COP' }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
