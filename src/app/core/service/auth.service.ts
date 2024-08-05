@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   public signIn(authDto: AuthLoginRequestDto): Observable<AuthLoginResponseDto> {
-     return this.http.post<AuthLoginResponseDto>(this.apiUrl + "auth/sign-in", authDto).pipe(
+     return this.http.post<AuthLoginResponseDto>("/api/auth/sign-in", authDto).pipe(
        tap(response => {
          this.tokenService.saveToken(response.token);
        })

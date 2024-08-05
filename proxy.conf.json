@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+    "target": "https://concesionariocochesback-production.up.railway.app",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
