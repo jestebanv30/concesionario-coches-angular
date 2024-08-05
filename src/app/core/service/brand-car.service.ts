@@ -15,6 +15,6 @@ export class BrandCarService {
   }
 
   public getAllBrandsCar(): Observable<BrandCarDto[]>{
-    return this.http.get<BrandCarDto[]>(this.apiUrl + "car-brands");
+    return this.http.get<BrandCarDto[]>("/api/car-brands");
   }
 }

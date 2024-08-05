@@ -21,7 +21,7 @@ export class CarService {
   }
 
   public getAllCars(): Observable<CarDto[]> {
-    return this.http.get<CarDto[]>(this.apiUrl + "cars");
+    return this.http.get<CarDto[]>("/api/cars");
   }
 
   public registerCar(newCar: CarDto): Observable<CarDto> {
